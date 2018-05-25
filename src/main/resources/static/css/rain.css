@@ -1,0 +1,452 @@
+.Raincontainer {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.window {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background: url("./../img/bokeh_1.jpeg");
+    background-size: cover;
+    background-position: 50%;
+    -webkit-filter: blur(8px);
+    filter: blur(8px);
+}
+
+.raindrops,
+.borders,
+.drops {
+    position: absolute;
+}
+
+.drops {
+    -webkit-filter: brightness(1.2);
+    filter: brightness(1.2);
+}
+
+.raindrop {
+    position: absolute;
+    border-radius: 100%;
+    background-image: url("./../img/bokeh_1.jpeg");
+    background-size: 5vw 5vh;
+    background-position: 50%;
+    -webkit-transform: rotate(180deg) rotateY(0);
+    transform: rotate(180deg) rotateY(0);
+}
+
+.raindrop:nth-child(1) {
+    left: 58.054026209vw;
+    top: 1.8396583687vh;
+    width: 17px;
+    height: 17.8827421405px;
+    background-position: 58.054026209% 29.4345339%;
+    -webkit-animation: 2.9428879447s falling 0.3s ease-in infinite;
+    animation: 2.9428879447s falling 0.3s ease-in infinite;
+}
+
+.raindrop:nth-child(2) {
+    left: 8.5018537639vw;
+    top: 2.42166777vh;
+    width: 15px;
+    height: 12.4791746px;
+    background-position: 8.5018537639% 38.7466843198%;
+    -webkit-animation: 2.8405882432s falling 0.3s ease-in infinite;
+    animation: 2.8405882432s falling 0.3s ease-in infinite;
+}
+
+.raindrop:nth-child(3) {
+    left: 64.4246102469vw;
+    top: 0.6252924607vh;
+    width: 14px;
+    height: 10.6318029031px;
+    background-position: 64.4246102469% 10.004679371%;
+    -webkit-animation: 1.3820702637s falling 0.3s ease-in infinite;
+    animation: 1.3820702637s falling 0.3s ease-in infinite;
+}
+
+.raindrop:nth-child(4) {
+    left: 69.1338910403vw;
+    top: 0.1175206692vh;
+    width: 16px;
+    height: 17.9759298424px;
+    background-position: 69.1338910403% 1.8803307078%;
+    -webkit-animation: 3.4768381082s falling 0.3s ease-in infinite;
+    animation: 3.4768381082s falling 0.3s ease-in infinite;
+}
+
+.raindrop:nth-child(5) {
+    left: 22.6013956327vw;
+    top: 6.0750049435vh;
+    width: 22px;
+    height: 21.3548901864px;
+    background-position: 22.6013956327% 97.2000790957%;
+    -webkit-animation: 3.1919187509s falling 0.3s ease-in infinite;
+    animation: 3.1919187509s falling 0.3s ease-in infinite;
+}
+
+.raindrop:nth-child(6) {
+    left: 81.9784894922vw;
+    top: 0.1630294199vh;
+    width: 23px;
+    height: 20.6117600779px;
+    background-position: 81.9784894922% 2.6084707187%;
+    -webkit-animation: 3.3080355517s falling 0.3s ease-in infinite;
+    animation: 3.3080355517s falling 0.3s ease-in infinite;
+}
+
+.raindrop:nth-child(7) {
+    left: 33.2640546825vw;
+    top: 0.1911289396vh;
+    width: 19px;
+    height: 14.2532238173px;
+    background-position: 33.2640546825% 3.0580630329%;
+    -webkit-animation: 3.3205919669s falling 0.3s ease-in infinite;
+    animation: 3.3205919669s falling 0.3s ease-in infinite;
+}
+
+.raindrop:nth-child(8) {
+    left: 51.3210624281vw;
+    top: 2.8200633637vh;
+    width: 22px;
+    height: 21.3485202973px;
+    background-position: 51.3210624281% 45.1210138194%;
+    -webkit-animation: 1.797225599s falling 0.3s ease-in infinite;
+    animation: 1.797225599s falling 0.3s ease-in infinite;
+}
+
+.raindrop:nth-child(9) {
+    left: 33.5198448146vw;
+    top: 6.1421950867vh;
+    width: 19px;
+    height: 18.7998680432px;
+    background-position: 33.5198448146% 98.2751213874%;
+    -webkit-animation: 1.0520625156s falling 0.3s ease-in infinite;
+    animation: 1.0520625156s falling 0.3s ease-in infinite;
+}
+
+.raindrop:nth-child(10) {
+    left: 25.945619478vw;
+    top: 5.4804634488vh;
+    width: 14px;
+    height: 15.4597739993px;
+    background-position: 25.945619478% 87.6874151808%;
+    -webkit-animation: 2.1298313193s falling 0.3s ease-in infinite;
+    animation: 2.1298313193s falling 0.3s ease-in infinite;
+}
+
+.raindrop:nth-child(11) {
+    left: 97.042729139vw;
+    top: 1.7772404612vh;
+    width: 15px;
+    height: 16.2514745657px;
+    background-position: 97.042729139% 28.4358473788%;
+    -webkit-animation: 2.8258076671s falling 0.3s ease-in infinite;
+    animation: 2.8258076671s falling 0.3s ease-in infinite;
+}
+
+.raindrop:nth-child(12) {
+    left: 90.8571289498vw;
+    top: 0.6973333186vh;
+    width: 15px;
+    height: 16.3054274391px;
+    background-position: 90.8571289498% 11.1573330979%;
+    -webkit-animation: 3.4878989823s falling 0.3s ease-in infinite;
+    animation: 3.4878989823s falling 0.3s ease-in infinite;
+}
+
+.raindrop:nth-child(13) {
+    left: 28.6234955643vw;
+    top: 3.1283541129vh;
+    width: 14px;
+    height: 12.3017527382px;
+    background-position: 28.6234955643% 50.053665807%;
+    -webkit-animation: 2.847727963s falling 0.3s ease-in infinite;
+    animation: 2.847727963s falling 0.3s ease-in infinite;
+}
+
+.raindrop:nth-child(14) {
+    left: 55.7929117842vw;
+    top: 3.3055421261vh;
+    width: 15px;
+    height: 12.1202117812px;
+    background-position: 55.7929117842% 52.8886740172%;
+    -webkit-animation: 2.7865682114s falling 0.3s ease-in infinite;
+    animation: 2.7865682114s falling 0.3s ease-in infinite;
+}
+
+.raindrop:nth-child(15) {
+    left: 99.3689742914vw;
+    top: 3.1177857022vh;
+    width: 14px;
+    height: 14.0685875127px;
+    background-position: 99.3689742914% 49.8845712347%;
+    -webkit-animation: 1.6569663526s falling 0.3s ease-in infinite;
+    animation: 1.6569663526s falling 0.3s ease-in infinite;
+}
+
+.raindrop:nth-child(16) {
+    left: 67.9001223406vw;
+    top: 3.3426180727vh;
+    width: 23px;
+    height: 24.5505326516px;
+    background-position: 67.9001223406% 53.4818891634%;
+    -webkit-animation: 1.0651399188s falling 0.3s ease-in infinite;
+    animation: 1.0651399188s falling 0.3s ease-in infinite;
+}
+
+.raindrop:nth-child(17) {
+    left: 37.3656939791vw;
+    top: 1.0914483801vh;
+    width: 14px;
+    height: 15.330301432px;
+    background-position: 37.3656939791% 17.4631740811%;
+    -webkit-animation: 1.4904167321s falling 0.3s ease-in infinite;
+    animation: 1.4904167321s falling 0.3s ease-in infinite;
+}
+
+.raindrop:nth-child(18) {
+    left: 60.6056180418vw;
+    top: 4.8541103156vh;
+    width: 16px;
+    height: 11.7289949769px;
+    background-position: 60.6056180418% 77.6657650499%;
+    -webkit-animation: 1.3266917626s falling 0.3s ease-in infinite;
+    animation: 1.3266917626s falling 0.3s ease-in infinite;
+}
+
+.raindrop:nth-child(19) {
+    left: 98.4975914565vw;
+    top: 3.1118093324vh;
+    width: 17px;
+    height: 18.0035971686px;
+    background-position: 98.4975914565% 49.7889493185%;
+    -webkit-animation: 3.4321056365s falling 0.3s ease-in infinite;
+    animation: 3.4321056365s falling 0.3s ease-in infinite;
+}
+
+.raindrop:nth-child(20) {
+    left: 94.081568165vw;
+    top: 0.5703457109vh;
+    width: 22px;
+    height: 22.6828979471px;
+    background-position: 94.081568165% 9.125531375%;
+    -webkit-animation: 2.4369365996s falling 0.3s ease-in infinite;
+    animation: 2.4369365996s falling 0.3s ease-in infinite;
+}
+
+.raindrop:nth-child(21) {
+    left: 93.0539212352vw;
+    top: 5.2392605544vh;
+    width: 22px;
+    height: 23.9697359188px;
+    background-position: 93.0539212352% 83.8281688698%;
+    -webkit-animation: 2.139002999s falling 0.3s ease-in infinite;
+    animation: 2.139002999s falling 0.3s ease-in infinite;
+}
+
+.raindrop:nth-child(22) {
+    left: 64.9239473052vw;
+    top: 4.6632590911vh;
+    width: 20px;
+    height: 19.3450585231px;
+    background-position: 64.9239473052% 74.6121454581%;
+    -webkit-animation: 1.5488620402s falling 0.3s ease-in infinite;
+    animation: 1.5488620402s falling 0.3s ease-in infinite;
+}
+
+.raindrop:nth-child(23) {
+    left: 99.8438994175vw;
+    top: 5.5278083713vh;
+    width: 16px;
+    height: 13.3867140812px;
+    background-position: 99.8438994175% 88.4449339413%;
+    -webkit-animation: 1.8875475146s falling 0.3s ease-in infinite;
+    animation: 1.8875475146s falling 0.3s ease-in infinite;
+}
+
+.raindrop:nth-child(24) {
+    left: 37.3519888287vw;
+    top: 2.120928786vh;
+    width: 16px;
+    height: 18.5849027544px;
+    background-position: 37.3519888287% 33.934860576%;
+    -webkit-animation: 2.1189168855s falling 0.3s ease-in infinite;
+    animation: 2.1189168855s falling 0.3s ease-in infinite;
+}
+
+.raindrop:nth-child(25) {
+    left: 44.3986624859vw;
+    top: 1.3122442475vh;
+    width: 18px;
+    height: 18.5244064328px;
+    background-position: 44.3986624859% 20.9959079604%;
+    -webkit-animation: 3.0759016758s falling 0.3s ease-in infinite;
+    animation: 3.0759016758s falling 0.3s ease-in infinite;
+}
+
+.raindrop:nth-child(26) {
+    left: 62.5107581951vw;
+    top: 0.3471813576vh;
+    width: 17px;
+    height: 12.2113678774px;
+    background-position: 62.5107581951% 5.5549017209%;
+    -webkit-animation: 3.4822309971s falling 0.3s ease-in infinite;
+    animation: 3.4822309971s falling 0.3s ease-in infinite;
+}
+
+.raindrop:nth-child(27) {
+    left: 63.7531449836vw;
+    top: 2.616622978vh;
+    width: 23px;
+    height: 22.1644128026px;
+    background-position: 63.7531449836% 41.8659676475%;
+    -webkit-animation: 2.6665252869s falling 0.3s ease-in infinite;
+    animation: 2.6665252869s falling 0.3s ease-in infinite;
+}
+
+.raindrop:nth-child(28) {
+    left: 10.611576907vw;
+    top: 2.9525889794vh;
+    width: 22px;
+    height: 21.7032811408px;
+    background-position: 10.611576907% 47.2414236708%;
+    -webkit-animation: 3.1486807666s falling 0.3s ease-in infinite;
+    animation: 3.1486807666s falling 0.3s ease-in infinite;
+}
+
+.raindrop:nth-child(29) {
+    left: 69.4646915903vw;
+    top: 1.6776017753vh;
+    width: 19px;
+    height: 13.5005522071px;
+    background-position: 69.4646915903% 26.8416284044%;
+    -webkit-animation: 3.4514507669s falling 0.3s ease-in infinite;
+    animation: 3.4514507669s falling 0.3s ease-in infinite;
+}
+
+.raindrop:nth-child(30) {
+    left: 1.3048893674vw;
+    top: 2.9026276259vh;
+    width: 20px;
+    height: 19.141444661px;
+    background-position: 1.3048893674% 46.4420420146%;
+    -webkit-animation: 2.2344756041s falling 0.3s ease-in infinite;
+    animation: 2.2344756041s falling 0.3s ease-in infinite;
+}
+
+.raindrop:nth-child(31) {
+    left: 19.8158294279vw;
+    top: 0.9932693237vh;
+    width: 18px;
+    height: 21.3606510915px;
+    background-position: 19.8158294279% 15.8923091792%;
+    -webkit-animation: 2.7079810349s falling 0.3s ease-in infinite;
+    animation: 2.7079810349s falling 0.3s ease-in infinite;
+}
+
+.raindrop:nth-child(32) {
+    left: 29.8986238111vw;
+    top: 4.0957936225vh;
+    width: 20px;
+    height: 15.8552042917px;
+    background-position: 29.8986238111% 65.5326979604%;
+    -webkit-animation: 1.9210037527s falling 0.3s ease-in infinite;
+    animation: 1.9210037527s falling 0.3s ease-in infinite;
+}
+
+.raindrop:nth-child(33) {
+    left: 95.6198656277vw;
+    top: 3.3878852669vh;
+    width: 16px;
+    height: 15.0081561987px;
+    background-position: 95.6198656277% 54.2061642704%;
+    -webkit-animation: 2.4411971495s falling 0.3s ease-in infinite;
+    animation: 2.4411971495s falling 0.3s ease-in infinite;
+}
+
+.raindrop:nth-child(34) {
+    left: 38.7975668245vw;
+    top: 5.9218693221vh;
+    width: 20px;
+    height: 17.6251648507px;
+    background-position: 38.7975668245% 94.7499091543%;
+    -webkit-animation: 2.4029258044s falling 0.3s ease-in infinite;
+    animation: 2.4029258044s falling 0.3s ease-in infinite;
+}
+
+.raindrop:nth-child(35) {
+    left: 97.3731210079vw;
+    top: 4.7184874072vh;
+    width: 17px;
+    height: 16.5456149459px;
+    background-position: 97.3731210079% 75.4957985147%;
+    -webkit-animation: 2.8646818475s falling 0.3s ease-in infinite;
+    animation: 2.8646818475s falling 0.3s ease-in infinite;
+}
+
+.raindrop:nth-child(36) {
+    left: 77.7130135848vw;
+    top: 1.5011617579vh;
+    width: 14px;
+    height: 10.6983896715px;
+    background-position: 77.7130135848% 24.018588126%;
+    -webkit-animation: 1.3382463632s falling 0.3s ease-in infinite;
+    animation: 1.3382463632s falling 0.3s ease-in infinite;
+}
+
+.raindrop:nth-child(37) {
+    left: 36.5176813001vw;
+    top: 2.914435293vh;
+    width: 15px;
+    height: 17.2344426928px;
+    background-position: 36.5176813001% 46.6309646878%;
+    -webkit-animation: 2.2255821064s falling 0.3s ease-in infinite;
+    animation: 2.2255821064s falling 0.3s ease-in infinite;
+}
+
+.raindrop:nth-child(38) {
+    left: 93.3167989541vw;
+    top: 5.2819069777vh;
+    width: 14px;
+    height: 16.633822785px;
+    background-position: 93.3167989541% 84.5105116426%;
+    -webkit-animation: 2.270228838s falling 0.3s ease-in infinite;
+    animation: 2.270228838s falling 0.3s ease-in infinite;
+}
+
+.raindrop:nth-child(39) {
+    left: 65.9754595613vw;
+    top: 3.3803940658vh;
+    width: 23px;
+    height: 22.2379760181px;
+    background-position: 65.9754595613% 54.0863050526%;
+    -webkit-animation: 1.3035712431s falling 0.3s ease-in infinite;
+    animation: 1.3035712431s falling 0.3s ease-in infinite;
+}
+
+.raindrop:nth-child(40) {
+    left: 54.3242562083vw;
+    top: 6.1787179664vh;
+    width: 15px;
+    height: 12.6584299962px;
+    background-position: 54.3242562083% 98.8594874619%;
+    -webkit-animation: 2.933315025s falling 0.3s ease-in infinite;
+    animation: 2.933315025s falling 0.3s ease-in infinite;
+}
+
+@-webkit-keyframes falling {
+    to {
+        -webkit-transform: translateY(1000px);
+        transform: translateY(1000px);
+    }
+}
+
+@keyframes falling {
+    to {
+        -webkit-transform: translateY(1500px);
+        transform: translateY(1500px);
+    }
+}

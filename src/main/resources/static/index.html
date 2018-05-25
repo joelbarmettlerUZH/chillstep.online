@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119854066-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-119854066-1');
+    </script>
+
+    <link rel="shortcut icon" type="image/png" href="/res/icon/favicon.png"/>
+
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+
+    <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" />-->
+
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <script src="js/15af25ac7b.js"></script>
+    <title>ChillRadio</title>
+
+    <meta charset="utf-8">
+    <meta content='IE=8' http-equiv='X-UA-Compatible'>
+    <title>ChillRadio</title>
+    <!-- Das favicon.ico und das apple-touch-icon.png in das root Verzeichnis -->
+    <link rel="stylesheet" href="css/style.css">
+    <link href='css/google-font.css' rel='stylesheet' type='text/css' />
+    <link href='css/rain.css' rel='stylesheet' type='text/css' />
+    <link href='css/sidebar.css' rel='stylesheet' type='text/css' />
+    <!--[if lt IE 9]>
+    <!--<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>-->
+    <![endif]-->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="src/bufferloader.js"></script>
+    <script src="src/id3-minimized.js"></script>
+    <script src="src/audiovisualisierung.js"></script>
+</head>
+
+<body>
+    <script>
+        var audio = new Audio('src/rain.mp3');
+        audio.addEventListener('ended', function() {
+            this.currentTime = 0;
+            this.play();
+        }, false);
+        audio.play();
+        audio.volume = 1;
+        window.onload = playSample;
+
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+            document.getElementById("openMenu").style.color = "transparent";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+            document.getElementById("openMenu").style.color = "white";
+        }
+
+        function rain() {
+            let text = "Turn rain On";
+            if (audio.volume > 0) {
+                audio.volume = 0;
+                document.getElementById("rainScreen").style.visibility = "hidden";
+            } else {
+                audio.volume = 1;
+                document.getElementById("rainScreen").style.visibility = "visible";
+                text = "Turn rain Off"
+            }
+            document.getElementById("rain").innerText = text;
+        }
+
+        function openForm(text) {
+            document.getElementById("formNav").style.height = "150px";
+            switch(text){
+                case "copyright":
+                    document.getElementById("content").innerHTML = "Chillstep.online only plays songs that are released under the soundcloud 'to share' license, and every creator is directly linked whenever one of his songs is playing. However, we respect everyone that does not want us to play his songs. " +
+                        "If you heard your song and would like us to remove it, send us an E-Mail to " +
+                        "'<a data-a=\"copyright\" data-b=\"chillstep\" data-c=\"online\" href=\"#\" class=\"abc abtn\" onclick=\"window.location.href = 'mailto:' + this.dataset.a + '@' + this.dataset.b + '.' + this.dataset.c\"></a>' where you state which song(s) we shall remove and a quick prove that these songs actually belong to you.";
+                    break;
+                case "submit":
+                    document.getElementById("content").innerHTML = "Chillstep.online shall be a platform for chillstep lovers. If you are a producer of the finest chillstep and release it under the 'to-share' license, feel free " +
+                        "to send us an E-Mail with your SoundCloud profile to " +
+                        "'<a data-a=\"copyright\" data-b=\"chillstep\" data-c=\"online\" href=\"#\" class=\"abc abtn\" onclick=\"window.location.href = 'mailto:' + this.dataset.a + '@' + this.dataset.b + '.' + this.dataset.c\"></a>' and we will include your best songs into our library!";
+                    break;
+                default:
+                    document.getElementById("content").innerHTML = "Chillstep.online is a free, non-profit and open source online radio for the finest chillstep. We play 24/7 only the highest quality music out there - from the most famous artists to independent creators - if it touches our heart, then we'll give it a spot!";
+            }
+        }
+
+        function closeForm() {
+            document.getElementById("formNav").style.height = "0";
+        }
+    </script>
+
+    <div class='Raincontainer'>
+        <div class='window'></div>
+        <div class='raindrops'>
+            <div id="rainScreen" class='drops'>
+                <div class='raindrop'></div>
+                <div class='raindrop'></div>
+                <div class='raindrop'></div>
+                <div class='raindrop'></div>
+                <div class='raindrop'></div>
+                <div class='raindrop'></div>
+                <div class='raindrop'></div>
+                <div class='raindrop'></div>
+                <div class='raindrop'></div>
+                <div class='raindrop'></div>
+                <div class='raindrop'></div>
+                <div class='raindrop'></div>
+                <div class='raindrop'></div>
+                <div class='raindrop'></div>
+                <div class='raindrop'></div>
+                <div class='raindrop'></div>
+                <div class='raindrop'></div>
+                <div class='raindrop'></div>
+                <div class='raindrop'></div>
+                <div class='raindrop'></div>
+                <div class='raindrop'></div>
+                <div class='raindrop'></div>
+                <div class='raindrop'></div>
+                <div class='raindrop'></div>
+                <div class='raindrop'></div>
+                <div class='raindrop'></div>
+                <div class='raindrop'></div>
+                <div class='raindrop'></div>
+                <div class='raindrop'></div>
+                <div class='raindrop'></div>
+                <div class='raindrop'></div>
+                <div class='raindrop'></div>
+                <div class='raindrop'></div>
+                <div class='raindrop'></div>
+                <div class='raindrop'></div>
+                <div class='raindrop'></div>
+                <div class='raindrop'></div>
+                <div class='raindrop'></div>
+                <div class='raindrop'></div>
+                <div class='raindrop'></div>
+            </div>
+        </div>
+    </div>
+
+    <span id="loading"></span>
+    <div id="song_info_wrapper" title="Play / Pause" onClick="playPause()" style="cursor: pointer;">
+        <div id="artist">Unknown Artist</div>
+        <div id="title">Unknown Titel</div>
+        <a href="#" id="album" target="_blank" onClick="event.stopPropagation();">Credit</a>
+    </div>
+    <canvas id="freq" width="1024" height="525"></canvas>
+
+    <div id="mySidenav" class="side sidenav animateHue">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="#" onclick="openForm('submit'); closeNav()">Submit Song</a>
+        <a href="#" onclick="openForm('copyright'); closeNav()">Copyright claim</a>
+        <a href="#" onclick="openForm('about'); closeNav()">About</a>
+        <a href="#" id="rain" onclick="rain(); closeNav()">Turn rain Off</a>
+        <a href="http://www.github.com/joelbarmettlerUZH" target="_blank">Source Code</a>
+
+    </div>
+    <span id="openMenu" onclick="openNav()">&#9776;</span>
+
+    <div id="formNav" class="bottom sidenav animateHue">
+        <a href="javascript:void(0)" class="closebtn nonTop" onclick="closeForm()">&times;</a>
+        <p id="content">
+        </p>
+    </div>
+
+</body>
+
+</html>

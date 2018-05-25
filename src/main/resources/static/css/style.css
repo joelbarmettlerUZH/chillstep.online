@@ -1,0 +1,146 @@
+@keyframes hue {
+    0% {
+        filter: hue-rotate(0deg);
+        -webkit-filter: hue-rotate(0deg);
+    }
+
+    100% {
+        filter: hue-rotate(-360deg);
+        -webkit-filter: hue-rotate(-360deg);
+    }
+}
+
+#freq {
+    background: linear-gradient(rgba(255, 0, 136, 0.1), rgba(255,0,0,0.1));
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    margin: 0 auto;
+}
+
+body {
+    background:#000;
+    overflow: hidden;
+}
+
+.abc:after {
+    content: attr(data-a) "@" attr(data-b) "." attr(data-c);
+}
+
+p {
+    text-align: center;
+    font-weight: 100;
+    font-family: "Roboto", sans-serif;
+    /*font-size: 100px;*/
+    color: #fff;
+    text-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+    padding-left: 35px;
+    padding-top: 20px;
+    padding-right: 35px;
+    font-size: 20px;
+    white-space: normal;
+}
+
+#freq.animateHue {
+    animation-name: hue;
+    animation-duration: 500s;
+    animation-delay: 1s;
+    animation-iteration-count: infinite;
+
+    -webkit-animation-name: hue;
+    -webkit-animation-duration: 500s;
+    -webkit-animation-delay: 1s;
+    -webkit-animation-iteration-count: infinite;
+}
+#title, #artist, #album {
+    position: relative;
+    text-align: center;
+    width: 100%;
+    z-index: 999;
+    font-weight: 100;
+    font-family: "Roboto", sans-serif;
+    /*font-size: 100px;*/
+    color: #fff;
+    visibility: hidden;
+    letter-spacing: -.05em;
+    text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.5);
+    margin-bottom: 15px;
+}
+#song_info_wrapper {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+}
+
+#title {
+    font-size: 8vw;
+}
+
+#artist {
+    font-size: 3vw;
+}
+#album {
+    font-size: 3vw;
+    /*font-size: 40px;*/
+    margin-bottom: 0;
+}
+
+input, button, #loading {
+    position: absolute;
+    top: 10px;
+    left: 5px;
+    display: block;
+    z-index: 999;
+
+}
+
+#playSampleButton {
+    top: 40px;
+}
+
+#useMicButton {
+    top: 70px;
+}
+
+#loading {
+    display: inline-block;
+    top: 44px;
+    left: 110px;
+    font-family: "Roboto", sans-serif;
+    font-size: 12px;
+}
+
+html, body {
+    width:  100%;
+    height: 100%;
+    margin: 0;
+}
+
+@media screen and (min-width: 1000px) {
+    #title {
+        font-size: 80px;
+    }
+
+    #artist, #album {
+        font-size: 40px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    #artist, #album {
+        font-weight: 300;
+        font-size: 4vw;
+    }
+}
+
+@media screen and (max-width: 436px) {
+    #artist, #album {
+        font-weight: 300;
+        font-size: 4.5vw;
+    }
+
+    #title {
+
+    }
+}
