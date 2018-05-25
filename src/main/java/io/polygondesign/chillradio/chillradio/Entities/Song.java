@@ -7,16 +7,18 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class Song {
 
-    public String url;
-    public String artist;
-    public String songname;
-    public String creditsUrl;
+    private String url;
+    private String artist;
+    private String songname;
+    private String creditsUrl;
 
-    public float length;
-    public int currentTime;
+    private float length;
+    private int currentTime;
+
+    private static final String baseUrl = "//s3.eu-central-1.amazonaws.com/online.chillstep.s3/";
 
     public Song(String url, String artist, String songname, String creditsUrl, float length){
-        this.url = url;
+        this.url = baseUrl + url;
         this.artist = artist;
         this.songname = songname;
         this.creditsUrl = creditsUrl;
@@ -34,4 +36,25 @@ public class Song {
     public float getLength(){
         return this.length;
     }
+
+    public String getUrl() {
+        return url;
+    }
+
+
+    public String getArtist() {
+        return artist;
+    }
+
+
+    public String getSongname() {
+        return songname;
+    }
+
+
+    public String getCreditsUrl() {
+        return creditsUrl;
+    }
+
+
 }

@@ -26,7 +26,6 @@ $(function () {
     initBinCanvas();
 });
 
-const baseURL = "http://localhost:8080/";
 const apiURL = "http://localhost:8080/api/v1/songs";
 
 var start = 0;
@@ -57,7 +56,7 @@ function playSample() {
     const songObject = getSongInformation();
     var startDate = new Date();
     const songname = songObject.songname;
-    const url = baseURL + "/" + songObject.url;
+    const url = songObject.url;
     const artist = songObject.artist;
     const creditsUrl = songObject.creditsUrl;
     const songlength = songObject.length;
@@ -67,6 +66,9 @@ function playSample() {
 
     console.log("getting "+url);
     request.open('GET', url, true);
+
+    //request.setRequestHeader('Access-Control-Allow-Origin', '*');
+    //request.setRequestHeader('Access-Control-Allow-Methods', 'GET');
 
     request.responseType = 'arraybuffer';
 
@@ -95,7 +97,7 @@ function playSample() {
             console.log(e);
         });
     };
-    request.send();
+    request.send("");
 
 }
 
