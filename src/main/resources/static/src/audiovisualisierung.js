@@ -26,7 +26,7 @@ $(function () {
     initBinCanvas();
 });
 
-const apiURL = "http://localhost:8080/api/v1/songs";
+const apiURL = "/api/v1/songs";
 
 var start = 0;
 var length = 0;
