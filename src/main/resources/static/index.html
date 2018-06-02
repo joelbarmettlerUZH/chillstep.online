@@ -48,62 +48,6 @@
 </head>
 
 <body>
-    <script>
-        var audio = new Audio('src/rain.mp3');
-        audio.addEventListener('ended', function() {
-            this.currentTime = 0;
-            this.play();
-        }, false);
-        audio.play();
-        audio.volume = 1;
-        window.onload = playSample;
-
-        function openNav() {
-            document.getElementById("mySidenav").style.width = "250px";
-            document.getElementById("openMenu").style.color = "transparent";
-        }
-
-        function closeNav() {
-            document.getElementById("mySidenav").style.width = "0";
-            document.getElementById("openMenu").style.color = "white";
-        }
-
-        function rain() {
-            let text = "Turn rain On";
-            if (audio.volume > 0) {
-                audio.volume = 0;
-                document.getElementById("rainScreen").style.visibility = "hidden";
-            } else {
-                audio.volume = 1;
-                document.getElementById("rainScreen").style.visibility = "visible";
-                text = "Turn rain Off"
-            }
-            document.getElementById("rain").innerText = text;
-        }
-
-        function openForm(text) {
-            document.getElementById("formNav").style.height = "150px";
-            switch(text){
-                case "copyright":
-                    document.getElementById("content").innerHTML = "Chillstep.online only plays songs that are released under the soundcloud 'to share' license, and every creator is directly linked whenever one of his songs is playing. However, we respect everyone that does not want us to play his songs. " +
-                        "If you heard your song and would like us to remove it, send us an E-Mail to " +
-                        "'<a data-a=\"copyright\" data-b=\"chillstep\" data-c=\"online\" href=\"#\" class=\"abc abtn\" onclick=\"window.location.href = 'mailto:' + this.dataset.a + '@' + this.dataset.b + '.' + this.dataset.c\"></a>' where you state which song(s) we shall remove and a quick prove that these songs actually belong to you.";
-                    break;
-                case "submit":
-                    document.getElementById("content").innerHTML = "Chillstep.online shall be a platform for chillstep lovers. If you are a producer of the finest chillstep and release it under the 'to-share' license, feel free " +
-                        "to send us an E-Mail with your SoundCloud profile to " +
-                        "'<a data-a=\"copyright\" data-b=\"chillstep\" data-c=\"online\" href=\"#\" class=\"abc abtn\" onclick=\"window.location.href = 'mailto:' + this.dataset.a + '@' + this.dataset.b + '.' + this.dataset.c\"></a>' and we will include your best songs into our library!";
-                    break;
-                default:
-                    document.getElementById("content").innerHTML = "Chillstep.online is a free, non-profit and open source online radio for the finest chillstep. We play 24/7 only the highest quality music out there - from the most famous artists to independent creators - if it touches our heart, then we'll give it a spot!";
-            }
-        }
-
-        function closeForm() {
-            document.getElementById("formNav").style.height = "0";
-        }
-    </script>
-
     <div class='Raincontainer'>
         <div class='window'></div>
         <div class='raindrops'>
@@ -176,6 +120,63 @@
         <p id="content">
         </p>
     </div>
+
+    <script>
+        var audio = new Audio('src/rain.mp3');
+        audio.addEventListener('ended', function() {
+            this.currentTime = 0;
+            this.play();
+        }, false);
+        audio.play();
+        audio.volume = 0;
+        document.getElementById("rainScreen").style.visibility = "hidden";
+        window.onload = playSample;
+
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+            document.getElementById("openMenu").style.color = "transparent";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+            document.getElementById("openMenu").style.color = "white";
+        }
+
+        function rain() {
+            let text = "Turn rain On";
+            if (audio.volume > 0) {
+                audio.volume = 0;
+                document.getElementById("rainScreen").style.visibility = "hidden";
+            } else {
+                audio.volume = 1;
+                document.getElementById("rainScreen").style.visibility = "visible";
+                text = "Turn rain Off"
+            }
+            document.getElementById("rain").innerText = text;
+        }
+
+        function openForm(text) {
+            document.getElementById("formNav").style.height = "150px";
+            switch(text){
+                case "copyright":
+                    document.getElementById("content").innerHTML = "Chillstep.online only plays songs that are released under the soundcloud 'to share' license, and every creator is directly linked whenever one of his songs is playing. However, we respect everyone that does not want us to play his songs. " +
+                        "If you heard your song and would like us to remove it, send us an E-Mail to " +
+                        "'<a data-a=\"copyright\" data-b=\"chillstep\" data-c=\"online\" href=\"#\" class=\"abc abtn\" onclick=\"window.location.href = 'mailto:' + this.dataset.a + '@' + this.dataset.b + '.' + this.dataset.c\"></a>' where you state which song(s) we shall remove and a quick prove that these songs actually belong to you.";
+                    break;
+                case "submit":
+                    document.getElementById("content").innerHTML = "Chillstep.online shall be a platform for chillstep lovers. If you are a producer of the finest chillstep and release it under the 'to-share' license, feel free " +
+                        "to send us an E-Mail with your SoundCloud profile to " +
+                        "'<a data-a=\"copyright\" data-b=\"chillstep\" data-c=\"online\" href=\"#\" class=\"abc abtn\" onclick=\"window.location.href = 'mailto:' + this.dataset.a + '@' + this.dataset.b + '.' + this.dataset.c\"></a>' and we will include your best songs into our library!";
+                    break;
+                default:
+                    document.getElementById("content").innerHTML = "Chillstep.online is a free, non-profit and open source online radio for the finest chillstep. We play 24/7 only the highest quality music out there - from the most famous artists to independent creators - if it touches our heart, then we'll give it a spot!";
+            }
+        }
+
+        function closeForm() {
+            document.getElementById("formNav").style.height = "0";
+        }
+    </script>
 
 </body>
 
