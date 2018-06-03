@@ -1,20 +1,20 @@
-var rafID = null;
-var analyser = null;
-var c = null;
-var cDraw = null;
-var ctx = null;
-var microphone = null;
-var ctxDraw = null;
+let rafID = null;
+let analyser = null;
+let c = null;
+let ctx = null;
 
-var loader;
-var filename;
-var fileChosen = false;
-var hasSetupUserMedia = false;
+let loader;
+let filename;
+let fileChosen = false;
+let hasSetupUserMedia = false;
 
 //handle different prefix of the audio context
 var AudioContext = AudioContext || webkitAudioContext;
 //create the context.
 var context = new AudioContext();
+
+//Reduce canvas drawing stripes
+let reduction = 1;
 
 //using requestAnimationFrame instead of timeout...
 if (!window.requestAnimationFrame)
@@ -26,14 +26,36 @@ $(function () {
     initBinCanvas();
 });
 
+function isTabletOrMobile() {
+    var check = false;
+    (function (a) {
+        if (/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino|android|ipad|playbook|silk/i.test(a) || /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0, 4))) check = true;
+    })(navigator.userAgent || navigator.vendor || window.opera);
+    return check;
+}
+
+function isMobile(){
+    var check = false;
+    (function(a){if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0,4))) check = true;})(navigator.userAgent||navigator.vendor||window.opera);
+    return check;
+}
+
+if(isTabletOrMobile()){
+    reduction = 2;
+}
+if(isMobile()){
+    reduction = 4;
+}
+
 const apiURL = "/api/v1/songs";
 
-var start = 0;
-var length = 0;
-var played = 0;
+let start = 0;
+let length = 0;
+let played = 0;
 
-function playSample() {
+function playSong() {
 
+    context = null;
     context = new AudioContext();
 
     played = context.currentTime;
@@ -44,7 +66,7 @@ function playSample() {
     fileChosen = true;
     setupAudioNodes();
 
-    var request = new XMLHttpRequest();
+    let request = new XMLHttpRequest();
 
 
     request.addEventListener("progress", updateProgress);
@@ -54,7 +76,7 @@ function playSample() {
 
 
     const songObject = getSongInformation();
-    var startDate = new Date();
+    let startDate = new Date();
     const songname = songObject.songname;
     const url = songObject.url;
     const artist = songObject.artist;
@@ -85,14 +107,13 @@ function playSample() {
         context.decodeAudioData(request.response, function(buffer) {
             // when the audio is decoded play the sound
             sourceNode.buffer = buffer;
-            var endDate   = new Date();
-            var seconds = (endDate.getTime() - startDate.getTime()) / 1000;
+            let endDate   = new Date();
+            let seconds = (endDate.getTime() - startDate.getTime()) / 1000;
             start = currentTime; // + seconds;
             length = songlength;
             sourceNode.start(0, start);
 
             $("#freq").addClass("animateHue");
-            //on error
         }, function(e) {
             console.log(e);
         });
@@ -102,7 +123,7 @@ function playSample() {
 }
 
 function getSongInformation() {
-    var xhttp = new XMLHttpRequest();
+    let xhttp = new XMLHttpRequest();
     xhttp.open("GET", apiURL, false);
     xhttp.send(null);
     return JSON.parse(xhttp.responseText);
@@ -112,9 +133,8 @@ function getSongInformation() {
 // progress on transfers from the server to the client (downloads)
 function updateProgress (oEvent) {
     if (oEvent.lengthComputable) {
-        var percentComplete = oEvent.loaded / oEvent.total;
+        let percentComplete = oEvent.loaded / oEvent.total;
         console.log("Loading music file... " + Math.floor(percentComplete * 100) + "%");
-        // $("#loading").html("Loading... " + Math.floor(percentComplete * 100) + "%");
     } else {
         // Unable to compute progress information since the total size is unknown
         console.log("Unable to compute progress info.");
@@ -153,7 +173,7 @@ function initBinCanvas () {
     window.addEventListener( 'resize', onWindowResize, false );
 
     //create gradient for the bins
-    var gradient = ctx.createLinearGradient(0, c.height - 300,0,window.innerHeight - 25);
+    let gradient = ctx.createLinearGradient(0, c.height - 300,0,window.innerHeight - 25);
     gradient.addColorStop(1,'#00f'); //black
     gradient.addColorStop(0.75,'#f00'); //red
     gradient.addColorStop(0.25,'#f00'); //yellow
@@ -169,17 +189,16 @@ function onWindowResize()
     ctx.canvas.width  = window.innerWidth;
     ctx.canvas.height = window.innerHeight;
 
-    var containerHeight = $("#song_info_wrapper").height();
-    var topVal = $(window).height() / 2 - containerHeight / 2;
+    let containerHeight = $("#song_info_wrapper").height();
+    let topVal = $(window).height() / 2 - containerHeight / 2;
     $("#song_info_wrapper").css("top", topVal);
 
     if($(window).width() <= 500) {
-        //TODO: not yet working
         $("#title").css("font-size", "40px");
     }
 }
 
-var sourceNode;
+let sourceNode;
 function setupAudioNodes() {
     // setup a analyser
     analyser = context.createAnalyser();
@@ -193,8 +212,13 @@ function setupAudioNodes() {
     rafID = window.requestAnimationFrame(updateVisualization);
 
     sourceNode.onended = function() {
+        //Restet everything
+        analyser = null;
+        sourceNode = null;
+        rafID = null;
+
         console.log("Song ended. Playing next one");
-        playSample();
+        playSong();
     }
 }
 
@@ -207,26 +231,14 @@ function playPause() {
         console.log("Restart");
         context.close();
         audio.play();
-        playSample();
+        playSong();
     }
 }
-
-
-function reset () {
-    if (typeof sourceNode !== "undefined") {
-        sourceNode.stop(0);
-    }
-    if (typeof microphone !== "undefined") {
-        microphone = null;
-    }
-}
-
 
 function updateVisualization () {
-
     // get the average, bincount is fftsize / 2
     if (fileChosen || hasSetupUserMedia) {
-        var array = new Uint8Array(analyser.frequencyBinCount/4);
+        let array = new Uint8Array(analyser.frequencyBinCount/4);
         analyser.getByteFrequencyData(array);
 
         drawBars(array);
@@ -237,29 +249,32 @@ function updateVisualization () {
 
 function drawBars (array) {
 
+    array = array.filter(function(value, index) {
+        return index % reduction == 0 && index <= array.length / 2;
+    });
+
     //just show bins with a value over the treshold
-    var threshold = 0;
+    let threshold = 0;
     // clear the current state
     ctx.clearRect(0, 0, c.width, c.height);
     //the max count of bins for the visualization
-    var maxBinCount = array.length;
+    let maxBinCount = array.length;
     //space between bins
-    var space = 3;
+    let space = 3;
 
     ctx.save();
 
 
     ctx.globalCompositeOperation='source-over';
 
-    //console.log(maxBinCount); //--> 1024
     ctx.scale(0.5, 0.5);
     ctx.translate(window.innerWidth, window.innerHeight);
 
 
-    var bass = Math.floor(array[1]); //1Hz Frequenz
-    var radius = 0.45 * $(window).width() <= 450 ? -(bass * 0.25 + 0.45 * $(window).width()) : -(bass * 0.25 + 450);
+    let bass = Math.floor(array[1]); //1Hz Frequenz
+    let radius = 0.45 * $(window).width() <= 450 ? -(bass * 0.25 + 0.45 * $(window).width()) : -(bass * 0.25 + 450);
 
-    var bar_length_factor = 1;
+    let bar_length_factor = 1;
     if ($(window).width() >= 785) {
         bar_length_factor = 1.0;
     }
@@ -272,28 +287,30 @@ function drawBars (array) {
     const currenttime = context.currentTime + start - played;
     const duration = length;
 
+    const stripeWidth = $(window).width() <= 450 ? 2*reduction : 3*reduction;
+    const rotationFactor = (180 / 128) * Math.PI/180 * reduction;
 
-    for ( var i = 0; i < maxBinCount; i++ ){
-        ctx.fillStyle = "#a0a0a0";
-        if (1-i/(maxBinCount-1) < currenttime/duration){
-            ctx.fillStyle = "#ffffff";
+    for ( let i = 0; i < maxBinCount; i++ ){
+        ctx.fillStyle = "#ffffff";
+        if (i/(maxBinCount*2) > currenttime/duration){
+            ctx.fillStyle = "#a0a0a0";
         }
-        var value = array[i];
+        let value = array[i];
         if (value >= threshold) {
-            ctx.rotate(-(180 / 128) * Math.PI/180);
-            ctx.fillRect(0, radius, $(window).width() <= 450 ? 2 : 3, -value / bar_length_factor);
+            ctx.fillRect(0, radius, stripeWidth, -value / bar_length_factor);
+            ctx.rotate(rotationFactor);
         }
     }
 
-    for ( var i = 0; i < maxBinCount; i++ ){
+    for ( let i = maxBinCount; i > 0 ; i-- ){
         ctx.fillStyle = "#ffffff";
-        if (i/maxBinCount >= currenttime/duration){
+        if (((maxBinCount*2)-i)/(maxBinCount*2) > currenttime/duration){
             ctx.fillStyle = "#a0a0a0";
         }
-        var value = array[i];
+        let value = array[i];
         if (value >= threshold) {
-            ctx.rotate((180 / 128) * Math.PI/180);
-            ctx.fillRect(0, radius, $(window).width() <= 450 ? 2 : 3, -value / bar_length_factor);
+            ctx.fillRect(0, radius, stripeWidth, -value / bar_length_factor);
+            ctx.rotate(rotationFactor);
         }
     }
 
